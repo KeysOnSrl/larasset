@@ -187,7 +187,7 @@ class Asset
         }
 
         $protocol = Request::secure() ? "https://" : "http://";
-        if (App::environment() !== (getenv('ASSETS_ENV') ?: 'production')) {
+        if (App::environment() !== (getenv('ASSETS_ENV') ?: 'production') && App::environment() !== (getenv('ASSETS_ENV') ?: 'staging')) {
             $assetHost = $assetHost ?: $protocol.$this->getHostname().":".$this->port;
             $assetLocation = $assetHost.$assetPrefix;
         } else {
